@@ -1,6 +1,5 @@
 package com.example.capco;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -52,7 +51,7 @@ public class Cap {
     }
 
     public Cap(JsonNode node) {
-        this.size = Size.valueOf(node.get("size").asText() + "by const");
+        this.size = Size.valueOf(node.get("size").asText());
         this.label = node.get("label").asText();
     }
     public Cap(String label, Size size) {

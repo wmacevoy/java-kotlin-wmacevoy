@@ -30,7 +30,6 @@ public class CapTest {
     public void setSize() {
         cap.setSize(Size.LARGE);
         assertEquals(Size.LARGE,cap.getSize());
-
     }
 
     @Test
