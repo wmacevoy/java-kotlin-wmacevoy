@@ -84,15 +84,6 @@ public class Cap {
         out.writeEndObject();
     }
 
-    public String toJson() {
-        ObjectMapper mapper = new ObjectMapper();
-        try {
-            return mapper.writeValueAsString(this);
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     public Cap(String label, Size size) {
         this.label = label;
         this.size = size;
