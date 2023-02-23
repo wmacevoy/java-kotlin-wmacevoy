@@ -45,7 +45,9 @@ android {
         viewBinding true
     }
 }
-
+jar {
+    enabled = true
+}
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.0'
@@ -58,7 +60,6 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '[2.14,3)'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '[2.14,3)'
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '[2.14,3)'
-
 
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '[2.7,3)'
     implementation 'org.springframework.boot:spring-boot-starter'

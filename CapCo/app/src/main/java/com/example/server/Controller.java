@@ -11,7 +11,7 @@ import java.util.List;
 public class Controller {
     Model model = new Model();
     @GetMapping("/caps")
-    List<Cap> all() {
+    List<Cap> getGaps() {
         return model.findAll();
     }
 }
