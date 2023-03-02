@@ -1,10 +1,9 @@
-package com.capco.commons;
-
-import static org.junit.Assert.*;
+package com.capco.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 public class SizeTest {
     @Test
@@ -19,10 +18,11 @@ public class SizeTest {
         assertEquals(Size.MEDIUM, size);
     }
 
-    @Test (expected = IllegalArgumentException.class)
+    @Test
     public void testFromWrongString() throws Exception {
-        Size size = Size.valueOf("MEDUIM");
-        assertEquals(Size.MEDIUM, size);
+        assertThrows(IllegalArgumentException.class, () -> {
+            Size size = Size.valueOf("MEDUIM");
+        });
     }
 
     @Test

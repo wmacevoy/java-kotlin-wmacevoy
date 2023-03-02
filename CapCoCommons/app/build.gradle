@@ -45,9 +45,7 @@ android {
         viewBinding true
     }
 }
-jar {
-    enabled = true
-}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.6.0'

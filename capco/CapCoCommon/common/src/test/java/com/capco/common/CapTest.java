@@ -1,24 +1,18 @@
-package com.capco.commons;
-
-import static org.junit.Assert.assertEquals;
+package com.capco.common;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 public class CapTest {
 
     Cap cap;
 
-    @Before
+    @BeforeEach
     public void setUp() throws Exception {
         cap = new Cap();
-    }
-
-    @After
-    public void tearDown() throws Exception {
     }
 
     @Test
@@ -37,14 +31,18 @@ public class CapTest {
         assertEquals("",cap.getLabel());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void setLabelNull() {
-        cap.setLabel(null);
+        assertThrows(IllegalArgumentException.class, ()->{
+            cap.setLabel(null);
+        });
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void setLabelLong() {
-        cap.setLabel("123456789012345678901234567890");
+        assertThrows(IllegalArgumentException.class, ()->{
+            cap.setLabel("123456789012345678901234567890");
+        });
     }
 
     @Test

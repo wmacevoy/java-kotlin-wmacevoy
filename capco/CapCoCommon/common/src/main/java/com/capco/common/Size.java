@@ -1,4 +1,4 @@
-package com.capco.commons;
+package com.capco.common;
 
 public enum Size {
     SMALL,

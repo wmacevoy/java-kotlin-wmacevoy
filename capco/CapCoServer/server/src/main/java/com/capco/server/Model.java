@@ -1,7 +1,7 @@
 package com.capco.server;
 
-import com.example.capco.Cap;
-import com.example.capco.Size;
+import com.capco.common.Cap;
+import com.capco.common.Size;
 
 import java.util.LinkedList;
 import java.util.List;

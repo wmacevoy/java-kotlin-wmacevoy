@@ -1,6 +1,6 @@
 package com.capco.server;
 
-import com.example.capco.Cap;
+import com.capco.common.Cap;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
