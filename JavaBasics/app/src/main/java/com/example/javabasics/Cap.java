@@ -3,9 +3,19 @@ package com.example.javabasics;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
-public class Cap {
+public class Cap implements Comparable<Cap> {
     private int threadCount;
+
+    public int getThreadCount() {
+        return threadCount;
+    }
+
+    public void setThreadCount(int threadCount) {
+        this.threadCount = threadCount;
+    }
+
     void doUselessThingsWithThreadCount() {
         threadCount++;
 
@@ -67,5 +77,26 @@ public class Cap {
             throw new IllegalArgumentException("label is too long");
         }
         this.label = label;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Cap ? compareTo((Cap) o) == 0 : false;
+//        if (this == o) return true;
+//        if (!(o instanceof Cap)) return false;
+//        Cap cap = (Cap) o;
+//        return threadCount == cap.threadCount && getSize().equals(cap.getSize()) && getLabel().equals(cap.getLabel());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(threadCount, getSize(), getLabel());
+    }
+
+    @Override
+    public int compareTo(Cap cap) {
+        if (threadCount != cap.threadCount) return Integer.compare(threadCount,cap.threadCount);
+        if (getSize() != cap.getSize()) return getSize().compareTo(cap.getSize());
+        return getLabel().compareTo(cap.getLabel());
     }
 }

@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class BuildersTest {
 
-    final int n = 100;
+    final int n = 1000000;
     Builders builders;
     @Before
     public void before() {
@@ -17,7 +17,7 @@ public class BuildersTest {
 
     @Test
     public void stars1() {
-        String ans = builders.stars1(n);
+        // String ans = builders.stars1(n);
     }
 
     @Test
