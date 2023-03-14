@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class Cap implements Comparable<Cap> {
+    public Cap(int threadCount, Size size, String label) {
+        this.threadCount = threadCount;
+        this.size = size;
+        this.label = label;
+    }
     private int threadCount;
 
     public int getThreadCount() {
@@ -39,7 +44,7 @@ public class Cap implements Comparable<Cap> {
     }
     public static final Size DEFAULT_SIZE = Size.MEDIUM;
 
-    private static Size size = DEFAULT_SIZE;
+    private Size size = DEFAULT_SIZE;
 
     public Size getSize() {
         return size;
