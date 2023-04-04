@@ -11,7 +11,7 @@ public class Caps {
     // this needs infrastructure for Cap.
     private Map<Cap, Customer> cap2CustomerMap = new TreeMap<Cap,Customer>();
 
-    // this infrastructure for String
+    // this needs infrastructure for String
     private Map<Customer,Cap> customer2CapMap = new TreeMap<Customer, Cap>();
 
     void addCap(Cap cap, Customer customer) {

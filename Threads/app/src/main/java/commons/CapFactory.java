@@ -24,6 +24,14 @@ public class CapFactory {
         collector.start();
         orderCollectorSet.add(collector);
     }
+
+    // this is the main entry point for a standard java desktop application.
+    // to use this in android studio, you have to modify the gradle.xml file in the .idea directory
+    // as in https://github.com/wmacevoy/java-kotlin-wmacevoy/blob/main/Threads/idea/gradle.xml
+    //
+    // Then create a new run configuration: Application, JDK 11, commons.CapFactory main, class
+    // path of Threads.main this should be enough to run this application as a desktop command line
+    // application.
     public static void main(String[] args) {
         CapFactory factory = new CapFactory();
         factory.run();
