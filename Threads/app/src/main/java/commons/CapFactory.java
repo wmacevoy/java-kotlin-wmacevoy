@@ -1,9 +1,11 @@
 package commons;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 
 class Order {
@@ -76,15 +78,34 @@ class Orders {
     }
 }
 
-class OrderCollector extends Thread {
+
+
+class OrderCollector implements Runnable {
     private String name;
     private CapFactory factory;
+    private Thread thread;
+    private boolean running = true;
 
-    OrderCollector(CapFactory factory, String name) { this.factory = factory; this.name = name ; }
+    OrderCollector(CapFactory factory, String name) {
+        this.factory = factory;
+        this.name = name ;
+        thread = new Thread(this);
+        thread.start();
+    }
+
+    void endShift() {
+        running = false;
+        thread.interrupt();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
     // @Override
     public void run() {
         System.out.println("OrderCollector " + name + " running.");
-        for (int i=0; i<4_000_000; ++i) {
+        for (int i=0; i<4_000_000  && running; ++i) {
             if (factory.orders.pending() > 1_000) {
                 factory.orders.waitForChange();
                 continue;
@@ -131,6 +152,10 @@ class OrderMaker extends Thread {
     }
 }
 
+class PrintHi implements Runnable {
+    @Override
+    public void run() { System.out.println("hi"); }
+}
 
     public class CapFactory {
     Orders orders = new Orders();
@@ -139,7 +164,7 @@ class OrderMaker extends Thread {
     Set<OrderMaker> orderMakerSet = new HashSet<>();
     void makeOrderCollector(String name) {
         OrderCollector collector = new OrderCollector(this, name);
-        collector.start();
+        // collector.start();
         orderCollectorSet.add(collector);
     }
 
@@ -169,5 +194,19 @@ class OrderMaker extends Thread {
         makeOrderMaker("Constantine");
         makeOrderMaker("Yiorgos 2");
         makeOrderMaker("Constantine 2");
+        new Thread(new PrintHi()).start();
+        new Thread(() -> { System.out.println("hi"); }).start();
+
+        Random rng = new Random();
+        ArrayList<Integer> x = new ArrayList<Integer>();
+
+        for (int i=0; i<1_000_000; ++i) {
+            x.add(rng.nextInt());
+        }
+        x.sort((Integer a,Integer b) -> { if (a < b) return -1; else if (b<a) return 1; else return 0; });
+        x.sort((a,b) -> a > b ? -1 : 0);
+
+
+        Integer sum2 = x.parallelStream().filter(a -> a > 0).map(a -> a*a).reduce(0, Integer::sum);
     }
 }
