@@ -29,7 +29,7 @@ class FirstFragment : Fragment() {
     private val calculateButton : Button get() = binding.calculateButton
     private val loanAmountEditText : EditText get() = binding.loanAmountEditText
     private val loanAmount : Double get() = loanAmountEditText.text.toString().toDoubleOrNull() ?: 0.0
-    private val interestRateEditText : EditText get() = binding.loanAmountEditText
+    private val interestRateEditText : EditText get() = binding.interestRateEditText
     private val interestRate : Double get() = interestRateEditText.text.toString().toDoubleOrNull() ?: 0.0
     private val loanTermEditText : EditText get() = binding.loanTermEditText
     private val loanTerm : Int get() = loanTermEditText.text.toString().toIntOrNull() ?: 0
