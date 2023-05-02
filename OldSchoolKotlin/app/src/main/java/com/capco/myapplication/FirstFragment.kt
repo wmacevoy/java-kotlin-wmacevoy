@@ -21,7 +21,7 @@ class FirstFragment : Fragment() {
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding : FragmentFirstBinding get() = _binding!!
 
     // make getters to simplify the rest of working with the ui components of this fragment
 
@@ -59,21 +59,6 @@ class FirstFragment : Fragment() {
         val monthlyPayment = calculateMonthlyPayment(loanAmount, interestRate, loanTerm)
         resultTextView.text =
             "Monthly Payment: $${String.format("%.2f", monthlyPayment)}"
-    }
-
-    private fun calculateMonthlyPayment(loanAmount: Double, interestRate: Double, loanTerm: Int): Double {
-        val monthlyInterestRate : Double = (interestRate / 100) / 12
-        val numberOfPayments : Int = loanTerm * 12
-
-        // Calculate the monthly payment using the formula
-        val monthlyPayment : Double = if (monthlyInterestRate == 0.0) {
-            loanAmount / numberOfPayments
-        } else {
-            val interestRateFactor = (1.0 + monthlyInterestRate).pow(numberOfPayments);
-            (loanAmount * monthlyInterestRate * interestRateFactor) / (interestRateFactor - 1)
-        }
-
-        return monthlyPayment
     }
 
     override fun onDestroyView() {
